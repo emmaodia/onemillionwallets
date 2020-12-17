@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Row, Col, Card, Table,} from 'react-bootstrap';
+import {Row, Col, Card } from 'react-bootstrap';
 import ContentLoader from "react-content-loader";
 import Tickers from '../../App/components/Tickers'
 
