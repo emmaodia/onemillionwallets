@@ -1,8 +1,9 @@
 import React from 'react';
-import {Card} from 'react-bootstrap';
+import {Col, Card} from 'react-bootstrap';
 
 const Balances = ({contract_name, contract_ticker_symbol, logo_url, balance, type, quote_rate, quote,nft_data}) => {
     return(
+        <Col md={6} xl={4}>
         <Card className='card-social'>
             <Card.Body className='border-bottom'>
                 <div className="row align-items-center justify-content-center">
@@ -32,6 +33,7 @@ const Balances = ({contract_name, contract_ticker_symbol, logo_url, balance, typ
                 </div>
             </Card.Body>
         </Card>
+        </Col>
     )
 }
 
