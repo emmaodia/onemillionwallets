@@ -35,6 +35,22 @@ const Dashboard = () => {
         getTicker();
     }, [setTicker, url])
 
+
+    const searchTickers = async() => {
+        
+        const searchTickers = async () => {
+            const response = await Axios ({
+            url: url,
+            method: "GET"
+        })
+        
+        const data = response.data.data.items;
+        console.log('here')
+        console.log(data)
+        setTicker(data)
+        setFetching(false);
+        }
+        
    
     const getQuery = e => {
         setQuery(e.target.value);
