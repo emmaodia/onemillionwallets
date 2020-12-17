@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Row, Col, Card } from 'react-bootstrap';
+import {Row, Col, Card, InputGroup, FormControl } from 'react-bootstrap';
 import ContentLoader from "react-content-loader";
 import Tickers from '../../App/components/Tickers'
 
@@ -11,10 +11,12 @@ const Dashboard = () => {
 
     const [tickers, setTicker] = useState([]);
     const [fetching, setFetching] = useState(true);
+    const [ query, setQuery ] = useState('');
+
+    const [search, setSearch] = useState('');
 
     const url = `https://api.covalenthq.com/v1/pricing/tickers/?key=API_KEY`
 
-    
 
     useEffect(() => {
         const getTicker = async () => {
@@ -33,28 +35,58 @@ const Dashboard = () => {
         getTicker();
     }, [setTicker, url])
 
-    if (fetching) return  <Card.Body>
-                            <Row>
-                                <Col md={12}>   <h5>Data Loading...</h5> 
-                                    <ContentLoader 
-                                        speed={2}
-                                        width={'75%'}
-                                        height={160}
-                                        viewBox="0 0 400 160"
-                                        backgroundColor="#f3f3f3"
-                                        foregroundColor="#ecebeb"
-                                        
-                                    >
-                                    <rect x="80" y="40" rx="3" ry="3" width="400" height="100" /> 
-                                    <rect x="80" y="40" rx="4" ry="4" width="400" height="100" />
-                                    <rect x="80" y="40" rx="3" ry="3" width="400" height="100" />
-                                    </ContentLoader>
-                                </Col>
-                            </Row>
-                        </Card.Body>
+   
+    const getQuery = e => {
+        setQuery(e.target.value);
+        console.log(query)
+    }
+    
+    const searchResult = e => {
+        e.preventDefault()
+        setSearch(query)
+        console.log(search)
+        console.log('here')
+    }
+
+    if (fetching) return    <Card.Body>
+                                <Row>
+                                    <Col md={12}>   <h5>Data Loading...</h5> 
+                                        <ContentLoader 
+                                            speed={2}
+                                            width={'75%'}
+                                            height={160}
+                                            viewBox="0 0 400 160"
+                                            backgroundColor="#f3f3f3"
+                                            foregroundColor="#ecebeb"
+                                            
+                                        >
+                                        <rect x="80" y="40" rx="3" ry="3" width="400" height="100" /> 
+                                        <rect x="80" y="40" rx="4" ry="4" width="400" height="100" />
+                                        <rect x="80" y="40" rx="3" ry="3" width="400" height="100" />
+                                        </ContentLoader>
+                                    </Col>
+                                </Row>
+                            </Card.Body>
 
         return (
             <Aux>
+                <Card>
+                    <Card.Header>
+                    <Card.Title as="h6">Enter a Wallet address to view all Transactions</Card.Title>
+                    </Card.Header>
+                    <Card.Body>
+                    <Row>
+                        <Col md={12}>
+                        <InputGroup className="mb-4">
+                            <InputGroup.Prepend>
+                            <InputGroup.Text onClick={searchResult} >Search</InputGroup.Text>
+                            </InputGroup.Prepend>
+                            <FormControl as="textarea" aria-label="With textarea"  type="text" value={query} onChange={getQuery} />
+                        </InputGroup>
+                        </Col>
+                    </Row>
+                    </Card.Body>
+                </Card>
                 <Row>
                     <Col md={6} xl={12}>
                         <Card className='Recent-Users'>
