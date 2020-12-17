@@ -27,6 +27,13 @@ export default {
                     url: '/dashboard/balances',
                     icon: 'feather icon-box',
                 },
+                {
+                    id: 'transactions',
+                    title: 'Transactions',
+                    type: 'item',
+                    url: '/dashboard/transactions',
+                    icon: 'feather icon-box',
+                },
             ]
         },
     ]
