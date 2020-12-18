@@ -14,33 +14,33 @@ const Dashboard = () => {
     const [ query, setQuery ] = useState('');
 
     const [search, setSearch] = useState('');
-
-    let url = "https://api.covalenthq.com/v1/pricing/tickers/?key=API_KEY"
     
     useEffect(() => {
 
+        let url = "https://api.covalenthq.com/v1/pricing/tickers/?key=API_KEY"
+    
+        const getTicker = async (value) => {
+
+            if ( value != null && value !== '') {
+                url += "&tickers=" + value
+            }
+        
+                const response = await Axios ({
+                url: url,
+                method: "GET"
+            })
+            
+            const data = response.data.data.items;
+            console.log('here1')
+            console.log(data)
+            setTicker(data)
+            setFetching(false);
+        }
+
       getTicker(search)  
 
-    }, [search, setQuery])
+    }, [ search, setQuery ])
 
-    const getTicker = async (value) => {
-
-    if ( value != null && value !== '') {
-        url += "&tickers=" + value
-    }
-
-        const response = await Axios ({
-        url: url,
-        method: "GET"
-    })
-    
-    const data = response.data.data.items;
-    console.log('here1')
-    console.log(data)
-    setTicker(data)
-    setFetching(false);
-    }
-    
      
     const getQuery = e => {
         setQuery(e.target.value);
