@@ -5,7 +5,7 @@ import Fullscreen from "react-full-screen";
 import windowSize from 'react-window-size';
 
 import Navigation from './Navigation';
-import NavBar from './NavBar';
+// import NavBar from './NavBar';
 import Breadcrumb from './Breadcrumb';
 import Loader from "../Loader";
 import routes from "../../../routes";
@@ -59,7 +59,7 @@ class AdminLayout extends Component {
             <Aux>
                 <Fullscreen enabled={this.props.isFullScreen}>
                     <Navigation />
-                    <NavBar />
+                    {/* <NavBar /> */}
                     <div className="pcoded-main-container" onClick={() => this.mobileOutClickHandler}>
                         <div className="pcoded-wrapper">
                             <div className="pcoded-content">
