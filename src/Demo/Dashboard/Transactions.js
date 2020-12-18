@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Row, Col, InputGroup, FormControl, Card } from "react-bootstrap";
 import Transactions from "../../App/components/Transactions";
 import Aux from "../../hoc/_Aux";
-import ContentLoader from "react-content-loader";
+// import ContentLoader from "react-content-loader";
 import Axios from "axios";
 
 const Dashboard = () => {
   const [transactions, setTransactions] = useState([]);
-  const [fetching, setFetching] = useState(true);
+  // const [fetching, setFetching] = useState(true);
   const [walletAddress, setWalletAddress] = useState('');
   const [ queryWallet, setQueryWallet ] = useState('')
 
@@ -39,31 +39,31 @@ const searchResult = e => {
       console.log("here");
       console.log(data);
       setTransactions(data);
-      setFetching(false);
+      // setFetching(false);
     };
 
     getTicker(walletAddress);
   }, [setTransactions, walletAddress]);
 
-  if (fetching) return  <Card.Body>
-                            <Row>
-                                <Col md={12}>   <h5>Data Loading...</h5> 
-                                    <ContentLoader 
-                                        speed={2}
-                                        width={'75%'}
-                                        height={160}
-                                        viewBox="0 0 400 160"
-                                        backgroundColor="#f3f3f3"
-                                        foregroundColor="#ecebeb"
+  // if (fetching) return  <Card.Body>
+  //                           <Row>
+  //                               <Col md={12}>   <h5>Data Loading...</h5> 
+  //                                   <ContentLoader 
+  //                                       speed={2}
+  //                                       width={'75%'}
+  //                                       height={160}
+  //                                       viewBox="0 0 400 160"
+  //                                       backgroundColor="#f3f3f3"
+  //                                       foregroundColor="#ecebeb"
                                         
-                                    >
-                                    <rect x="80" y="40" rx="3" ry="3" width="400" height="100" /> 
-                                    <rect x="80" y="40" rx="4" ry="4" width="400" height="100" />
-                                    <rect x="80" y="40" rx="3" ry="3" width="400" height="100" />
-                                    </ContentLoader>
-                                </Col>
-                            </Row>
-                        </Card.Body>
+  //                                   >
+  //                                   <rect x="80" y="40" rx="3" ry="3" width="400" height="100" /> 
+  //                                   <rect x="80" y="40" rx="4" ry="4" width="400" height="100" />
+  //                                   <rect x="80" y="40" rx="3" ry="3" width="400" height="100" />
+  //                                   </ContentLoader>
+  //                               </Col>
+  //                           </Row>
+  //                       </Card.Body>
                         
   return (
     <Aux>
