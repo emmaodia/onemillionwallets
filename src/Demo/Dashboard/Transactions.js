@@ -61,7 +61,7 @@ const Dashboard = () => {
                 <InputGroup.Prepend>
                   <InputGroup.Text>Search</InputGroup.Text>
                 </InputGroup.Prepend>
-                <FormControl as="textarea" aria-label="With textarea" />
+                <FormControl aria-label="With textarea" />
               </InputGroup>
             </Col>
           </Row>
