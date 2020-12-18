@@ -34,6 +34,13 @@ export default {
                     url: '/dashboard/transactions',
                     icon: 'feather icon-box',
                 },
+                {
+                    id: 'transfers',
+                    title: 'Transfers',
+                    type: 'item',
+                    url: '/dashboard/transfers',
+                    icon: 'feather icon-box',
+                },
             ]
         },
     ]
