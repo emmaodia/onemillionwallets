@@ -15,42 +15,49 @@ const Dashboard = () => {
 
     const [search, setSearch] = useState('');
 
-    const url = `https://api.covalenthq.com/v1/pricing/tickers/?key=API_KEY`
-
+    let url = "https://api.covalenthq.com/v1/pricing/tickers/?key=API_KEY"
+    // const urlSearch = `https://api.covalenthq.com/v1/pricing/tickers/?key=API_KEY&tickers=${search}`
 
     useEffect(() => {
-        const getTicker = async () => {
-            const response = await Axios ({
-            url: url,
-            method: "GET"
-        })
-        
-        const data = response.data.data.items;
-        console.log('here')
-        console.log(data)
-        setTicker(data)
-        setFetching(false);
-        }
-        
-        getTicker();
-    }, [setTicker, url])
 
+      getTicker(search)  
 
-    const searchTickers = async() => {
+    }, [search, setQuery])
+
+    const getTicker = async (value) => {
+
+    if ( value != null && value !== '') {
+        url += "&tickers=" + value
+    }
+
+        const response = await Axios ({
+        url: url,
+        method: "GET"
+    })
+    
+    const data = response.data.data.items;
+    console.log('here1')
+    console.log(data)
+    setTicker(data)
+    setFetching(false);
+    }
+    
+     
         
-        const searchTickers = async () => {
-            const response = await Axios ({
-            url: url,
-            method: "GET"
-        })
-        
-        const data = response.data.data.items;
-        console.log('here')
-        console.log(data)
-        setTicker(data)
-        setFetching(false);
-        }
-        
+    // const searchTickers = async () => {
+    //     const response = await Axios ({
+    //     url: urlSearch,
+    //     method: "GET"
+    // })
+    
+    // const data = response.data.data.items;
+    // console.log('here2')
+    // console.log(data)
+    // setTicker(data)
+    // setFetching(false);
+    // }
+       
+    
    
     const getQuery = e => {
         setQuery(e.target.value);
@@ -60,8 +67,9 @@ const Dashboard = () => {
     const searchResult = e => {
         e.preventDefault()
         setSearch(query)
+        setQuery('')
         console.log(search)
-        console.log('here')
+        console.log('here3')
     }
 
     if (fetching) return    <Card.Body>
@@ -111,7 +119,7 @@ const Dashboard = () => {
                             </Card.Header>
                             <Card.Body className='px-0 py-2'>
                                 {tickers.map(data => (
-                                    <Tickers key={data.contract_name}
+                                    <Tickers key={data.contract_address}
                                         contract_name={data.contract_name}
                                         contract_address={data.contract_address}
                                         contract_ticker_symbol={data.contract_ticker_symbol}
