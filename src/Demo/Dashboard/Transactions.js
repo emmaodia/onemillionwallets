@@ -8,11 +8,28 @@ import Axios from "axios";
 const Dashboard = () => {
   const [transactions, setTransactions] = useState([]);
   const [fetching, setFetching] = useState(true);
+  const [walletAddress, setWalletAddress] = useState('');
+  const [ queryWallet, setQueryWallet ] = useState('')
 
-  const url = `https://api.covalenthq.com/v1/1/address/0x32D9b5C41d594838d6b993ebAF538fF770a00E30/transactions_v2/?key=API_KEY`;
+  
+  const getWalletAdd = e => {
+    setQueryWallet(e.target.value)
+    console.log(queryWallet)
+}
 
+const searchResult = e => {
+    e.preventDefault()
+    setWalletAddress(queryWallet)
+    
+    // setWalletAddress('')
+    console.log(walletAddress)
+    console.log('here3')
+}
+  
   useEffect(() => {
-    const getTicker = async () => {
+    let url = `https://api.covalenthq.com/v1/1/address/${walletAddress}/transactions_v2/?key=API_KEY`;
+
+    const getTicker = async (value) => {
       const response = await Axios({
         url: url,
         method: "GET",
@@ -25,8 +42,8 @@ const Dashboard = () => {
       setFetching(false);
     };
 
-    getTicker();
-  }, [setTransactions, url]);
+    getTicker(walletAddress);
+  }, [setTransactions, walletAddress]);
 
   if (fetching) return  <Card.Body>
                             <Row>
@@ -59,9 +76,9 @@ const Dashboard = () => {
             <Col md={12}>
               <InputGroup className="mb-4">
                 <InputGroup.Prepend>
-                  <InputGroup.Text>Search</InputGroup.Text>
+                  <InputGroup.Text onClick={searchResult}>Search</InputGroup.Text>
                 </InputGroup.Prepend>
-                <FormControl aria-label="With textarea" />
+                <FormControl aria-label="With textarea" value={queryWallet} onChange={getWalletAdd} />
               </InputGroup>
             </Col>
           </Row>
