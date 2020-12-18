@@ -88,7 +88,7 @@ const Dashboard = () => {
                             <InputGroup.Prepend>
                             <InputGroup.Text onClick={searchResult} >Search</InputGroup.Text>
                             </InputGroup.Prepend>
-                            <FormControl as="textarea" aria-label="With textarea"  type="text" value={query} onChange={getQuery} />
+                            <FormControl aria-label="With textarea"  type="text" value={query} onChange={getQuery} />
                         </InputGroup>
                         </Col>
                     </Row>
