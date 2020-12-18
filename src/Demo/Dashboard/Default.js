@@ -8,7 +8,7 @@ const Dashboard = () => {
         return (
             <Aux>
                 <Row>
-                    <Col md={6} xl={4}>
+                    {/* <Col md={6} xl={4}>
                         <Card>
                             <Card.Body>
                                 <h6 className='mb-4'>Daily Sales</h6>
@@ -45,7 +45,7 @@ const Dashboard = () => {
                                 </div>
                             </Card.Body>
                         </Card>
-                    </Col>
+                    </Col> */}
                     {/* <Col xl={4}>
                         <Card>
                             <Card.Body>
@@ -65,7 +65,7 @@ const Dashboard = () => {
                             </Card.Body>
                         </Card>
                     </Col> */}
-                    <Col md={6} xl={4}>
+                    {/* <Col md={6} xl={4}>
                         <Card className='card-social'>
                             <Card.Body className='border-bottom'>
                                 <div className="row align-items-center justify-content-center">
@@ -95,12 +95,12 @@ const Dashboard = () => {
                                 </div>
                             </Card.Body>
                         </Card>
-                    </Col>
+                    </Col> */}
                     
                     <Col md={6} xl={12}>
                         <Card className='Recent-Users'>
                             <Card.Body className='px-0 py-2'>
-                                <div className="row align-items-center justify-content-center">Content</div>
+                                <div className="row align-items-center justify-content-center"><h3>Use the Sidebar for Navigation through the various use cases of the Dashboard!</h3></div>
                             </Card.Body>
                         </Card>
                     </Col>
