@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {Row, Col, Card, Form, FormGroup, Button } from 'react-bootstrap';
-import ContentLoader from "react-content-loader";
+// import ContentLoader from "react-content-loader";
 import Transfers from '../../App/components/Transfers'
 
 import Aux from "../../hoc/_Aux";
@@ -10,7 +10,7 @@ import Axios from 'axios';
 const Dashboard = () => {
 
     const [transfers, setTransfers] = useState([]);
-    const [fetching, setFetching] = useState(true);
+    // const [fetching, setFetching] = useState(true);
     
     const [walletAddress, setWalletAddress] = useState('');
     const [ queryWallet, setQueryWallet ] = useState('')
@@ -59,7 +59,7 @@ const Dashboard = () => {
             console.log(data1)
             console.log(data[0].transfers[0].contract_address)
             setTransfers(data1)
-            setFetching(false);
+            // setFetching(false);
         }
 
       getTransfers(walletAddress, tokenContract)  
@@ -67,25 +67,25 @@ const Dashboard = () => {
     }, [setQueryWallet, tokenContract, walletAddress])
 
 
-    if (fetching) return    <Card.Body>
-                                <Row>
-                                    <Col md={12}>   <h5>Data Loading...</h5> 
-                                        <ContentLoader 
-                                            speed={2}
-                                            width={'75%'}
-                                            height={160}
-                                            viewBox="0 0 400 160"
-                                            backgroundColor="#f3f3f3"
-                                            foregroundColor="#ecebeb"
+    // if (fetching) return    <Card.Body>
+    //                             <Row>
+    //                                 <Col md={12}>   <h5>Data Loading...</h5> 
+    //                                     <ContentLoader 
+    //                                         speed={2}
+    //                                         width={'75%'}
+    //                                         height={160}
+    //                                         viewBox="0 0 400 160"
+    //                                         backgroundColor="#f3f3f3"
+    //                                         foregroundColor="#ecebeb"
                                             
-                                        >
-                                        <rect x="80" y="40" rx="3" ry="3" width="400" height="100" /> 
-                                        <rect x="80" y="40" rx="4" ry="4" width="400" height="100" />
-                                        <rect x="80" y="40" rx="3" ry="3" width="400" height="100" />
-                                        </ContentLoader>
-                                    </Col>
-                                </Row>
-                            </Card.Body>
+    //                                     >
+    //                                     <rect x="80" y="40" rx="3" ry="3" width="400" height="100" /> 
+    //                                     <rect x="80" y="40" rx="4" ry="4" width="400" height="100" />
+    //                                     <rect x="80" y="40" rx="3" ry="3" width="400" height="100" />
+    //                                     </ContentLoader>
+    //                                 </Col>
+    //                             </Row>
+    //                         </Card.Body>
 
         return (
             <Aux>
