@@ -101,6 +101,9 @@ const Dashboard = () => {
                         <Card className='Recent-Users'>
                             <Card.Body className='px-0 py-2'>
                                 <div className="row align-items-center justify-content-center"><h3>Use the Sidebar for Navigation through the various use cases of the Dashboard!</h3></div>
+                                <div className="row align-items-center justify-content-center">
+                                    <h4>Powered by: </h4><img src="https://www.covalenthq.com/static/images/covalent-logo.png" alt="Covalent Logo" style={{width : '7%', height:"7%"}} />
+                                </div>
                             </Card.Body>
                         </Card>
                     </Col>
