@@ -16,8 +16,7 @@ const Dashboard = () => {
     const [search, setSearch] = useState('');
 
     let url = "https://api.covalenthq.com/v1/pricing/tickers/?key=API_KEY"
-    // const urlSearch = `https://api.covalenthq.com/v1/pricing/tickers/?key=API_KEY&tickers=${search}`
-
+    
     useEffect(() => {
 
       getTicker(search)  
@@ -43,22 +42,6 @@ const Dashboard = () => {
     }
     
      
-        
-    // const searchTickers = async () => {
-    //     const response = await Axios ({
-    //     url: urlSearch,
-    //     method: "GET"
-    // })
-    
-    // const data = response.data.data.items;
-    // console.log('here2')
-    // console.log(data)
-    // setTicker(data)
-    // setFetching(false);
-    // }
-       
-    
-   
     const getQuery = e => {
         setQuery(e.target.value);
         console.log(query)
